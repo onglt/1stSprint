@@ -14,8 +14,13 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<Mvponboarding1Context>(options =>
-               options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+               options.UseSqlServer(builder.Configuration.GetConnectionString("AZURE_SQL_CONNECTIONSTRING")));
 
+builder.Services.AddStackExchangeRedisCache(options =>
+{
+options.Configuration = builder.Configuration["AZURE_REDIS_CONNECTIONSTRING"];
+options.InstanceName = "SampleInstance";
+});
 
 var app = builder.Build();
 
