@@ -103,10 +103,7 @@ export class CustomerList extends Component {
         const { selectedCustomerName } = this.state;
         const { selectedCustomerAddress } = this.state;
               
-        console.log(selectedCustomerId);
-        console.log($('#myFormEdit input[name=selectedCustomerName]').val());
-        console.log($('#myFormEdit input[name=selectedCustomerAddress]').val());
-
+        
         const requestData = {
             Id: selectedCustomerId,
             Name: $('#myFormEdit input[name=selectedCustomerName]').val(),            
@@ -154,13 +151,11 @@ export class CustomerList extends Component {
         
         const { selectedCustomerId } = this.state;
 
-        console.log(selectedCustomerId);
-
         const customerExistsInSales = this.state.sales.some(
             (sale) => sale.customerId === selectedCustomerId
         );
 
-        console.log(customerExistsInSales);
+        
 
         if (customerExistsInSales) {
             // Customer exists in sales, prevent deletion and show a message            
